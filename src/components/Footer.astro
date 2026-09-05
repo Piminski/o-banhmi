@@ -1,0 +1,19 @@
+---
+import site from "../data/site.json";
+
+interface Props {
+  site?: typeof site;
+}
+
+const { site: siteProp } = Astro.props;
+const siteData = siteProp ?? site;
+
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <p class="footer-copy">&copy; {year} {siteData.name}</p>
+  <nav class="footer-nav" aria-label="Footer">
+    <a href="/accessibility/">Accessibility Statement</a>
+  </nav>
+</footer>

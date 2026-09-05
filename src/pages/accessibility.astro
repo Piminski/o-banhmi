@@ -1,0 +1,110 @@
+---
+import site from "../data/site.json";
+import { ExternalLinkIcon } from "@lucide/astro";
+import Footer from "../components/Footer.astro";
+import "@fontsource-variable/geist";
+import "../styles/global.css";
+
+const lastUpdated = "September 2026";
+const telHref = `tel:${site.phone.replaceAll(/[^\d+]/g, "")}`;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={`Accessibility statement for ${site.name}. Our commitment to an accessible website.`} />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>Accessibility Statement | {site.name}</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#content">Skip to content</a>
+
+    <header class="page-header">
+      <a class="page-home" href="/">{site.name}</a>
+    </header>
+
+    <main id="content" class="legal-page">
+      <h1>Accessibility Statement</h1>
+      <p class="legal-updated">Last updated: {lastUpdated}</p>
+
+      <section aria-labelledby="commitment-heading">
+        <h2 id="commitment-heading">Our commitment</h2>
+        <p>
+          {site.name} is committed to ensuring digital accessibility for people with disabilities.
+          We continually improve the user experience for everyone and apply the relevant
+          accessibility standards.
+        </p>
+      </section>
+
+      <section aria-labelledby="conformance-heading">
+        <h2 id="conformance-heading">Conformance status</h2>
+        <p>
+          This website aims to conform with the Web Content Accessibility Guidelines (WCAG) 2.1
+          Level AA. These guidelines explain how to make web content more accessible to people
+          with a wide range of disabilities.
+        </p>
+      </section>
+
+      <section aria-labelledby="measures-heading">
+        <h2 id="measures-heading">Accessibility measures</h2>
+        <p>We have taken the following steps to support accessibility on this site:</p>
+        <ul>
+          <li>Semantic HTML with proper heading structure and landmarks</li>
+          <li>Keyboard navigation with visible focus indicators</li>
+          <li>Skip link to main content</li>
+          <li>Sufficient color contrast for text and interactive elements</li>
+          <li>Text alternatives and labels for icons and external links</li>
+          <li>Support for reduced motion preferences</li>
+          <li>Responsive layout that supports zoom and reflow</li>
+        </ul>
+      </section>
+
+      <section aria-labelledby="third-party-heading">
+        <h2 id="third-party-heading">Third-party content</h2>
+        <p>
+          Online ordering and delivery will use Toast when that service is live. Maps open in
+          Google Maps. Those services may have their own accessibility practices.
+        </p>
+      </section>
+
+      <section aria-labelledby="feedback-heading">
+        <h2 id="feedback-heading">Feedback and contact</h2>
+        <p>
+          We welcome your feedback on the accessibility of this website. If you encounter
+          accessibility barriers or need assistance, please contact us:
+        </p>
+        <ul>
+          <li>
+            Phone:{" "}
+            <a href={telHref} aria-label={`Call ${site.name} at ${site.phone}`}>
+              {site.phone}
+            </a>
+          </li>
+          <li>
+            Address:{" "}
+            <a
+              href={site.links.maps}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`${site.address}, opens in Google Maps`}
+            >
+              {site.address}
+              <ExternalLinkIcon class="external-icon" size={12} stroke-width={2} aria-hidden="true" />
+            </a>
+          </li>
+        </ul>
+        <p>
+          We try to respond to accessibility feedback within five business days.
+        </p>
+      </section>
+
+      <p class="legal-back">
+        <a href="/">Return to {site.name}</a>
+      </p>
+    </main>
+
+    <Footer />
+  </body>
+</html>

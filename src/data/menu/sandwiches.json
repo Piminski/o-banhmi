@@ -1,0 +1,42 @@
+{
+  "category": "Vietnamese Sandwiches",
+  "description": "On a toasted baguette with pickled daikon and carrot, cucumber, cilantro, jalapeño, and mayo.",
+  "items": [
+    {
+      "name": "Bo Xao / Beef Steak Sandwich",
+      "price": "$15",
+      "description": "Stir-fried beef steak.",
+      "image": "/images/menu/bo-xao.jpg"
+    },
+    {
+      "name": "Ca Moi / Sardine Sandwich",
+      "price": "$15",
+      "description": "Sardine.",
+      "image": "/images/menu/ca-moi.jpg"
+    },
+    {
+      "name": "Dau Phu / Lemongrass Tofu Sandwich",
+      "price": "$15",
+      "description": "Lemongrass tofu.",
+      "image": "/images/menu/dau-phu.jpg"
+    },
+    {
+      "name": "Ga / Shredded Lemongrass Chicken Sandwich",
+      "price": "$15",
+      "description": "Shredded lemongrass chicken.",
+      "image": "/images/menu/ga.jpg"
+    },
+    {
+      "name": "Thit Nguoi, Dac Biet / Cold Cuts Sandwich",
+      "price": "$15",
+      "description": "Vietnamese cold cuts.",
+      "image": "/images/menu/thit-nguoi.jpg"
+    },
+    {
+      "name": "Thit Nuong / Roasted Pork Sandwich",
+      "price": "$15",
+      "description": "Roasted pork.",
+      "image": "/images/menu/thit-nuong.jpg"
+    }
+  ]
+}

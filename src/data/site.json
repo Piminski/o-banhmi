@@ -1,0 +1,14 @@
+{
+  "name": "Ổ Bánh Mì",
+  "subtitle": "Vietnamese sandwiches, Silver Lake",
+  "description": "Vietnamese sandwiches and curry bowls in Silver Lake, Los Angeles. Pickup and delivery. Order directly.",
+  "address": "1997 Hyperion Ave, Los Angeles, CA 90027",
+  "phone": "323-741-0150",
+  "hours": [
+    "Opens Monday at 11 AM"
+  ],
+  "links": {
+    "order": "",
+    "maps": "https://maps.google.com/?q=1997+Hyperion+Ave,+Los+Angeles,+CA+90027"
+  }
+}

@@ -1,0 +1,150 @@
+---
+import { getMenu, getSite, groupedItems } from "../lib/content";
+import { ExternalLinkIcon } from "@lucide/astro";
+import "@fontsource-variable/geist";
+import Footer from "../components/Footer.astro";
+import "../styles/global.css";
+
+export const prerender = false;
+
+const slugify = (value: string) =>
+  value.toLowerCase().replaceAll("&", "and").replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+
+const addressLines = (address: string) => {
+  const parts = address.split(",").map((part) => part.trim()).filter(Boolean);
+  if (parts.length >= 3) {
+    return [parts[0], parts.slice(1).join(", ")];
+  }
+  return [address];
+};
+
+const telHref = (phone: string) => `tel:${phone.replaceAll(/[^\d+]/g, "")}`;
+
+const site = await getSite();
+const menu = await getMenu();
+const showFallbacks = import.meta.env.DEV;
+const canOrderOnline = Boolean(site.links.order?.trim());
+const orderHref = canOrderOnline ? site.links.order : telHref(site.phone);
+const orderLabel = "Pickup / Delivery";
+const orderAria = canOrderOnline
+  ? "Pickup or delivery, opens in a new tab"
+  : `Pickup or delivery — call ${site.name} at ${site.phone}`;
+
+Astro.response.headers.set("Cache-Control", "public, max-age=0, s-maxage=0, must-revalidate");
+
+const lines = addressLines(site.address);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={site.description} />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta property="og:title" content={`${site.name} · ${site.subtitle}`} />
+    <meta property="og:description" content={site.description} />
+    <meta property="og:image" content="/images/site/storefront.jpg" />
+    <title>{site.name} · {site.subtitle}</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#menu">Skip to menu</a>
+    <header class="site-header">
+      <a class="site-header-name" href="/">{site.name}</a>
+      {
+        canOrderOnline ? (
+          <a
+            class="site-header-order"
+            href={orderHref}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={orderAria}
+          >
+            {orderLabel}
+            <ExternalLinkIcon class="external-icon" size={12} stroke-width={2} aria-hidden="true" />
+          </a>
+        ) : (
+          <a class="site-header-order" href={orderHref} aria-label={orderAria}>
+            {orderLabel}
+          </a>
+        )
+      }
+    </header>
+
+    <section class="hero" aria-label="Restaurant information">
+      <div class="hero-content">
+        <h1>{site.name}</h1>
+        <p class="subtitle">{site.subtitle}</p>
+        <a
+          class="hero-address"
+          href={site.links.maps}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`${site.address}, opens in Google Maps`}
+        >
+          {lines.map((line, index) => (
+            <>
+              {index > 0 && <br />}
+              {line}
+            </>
+          ))}
+          <ExternalLinkIcon class="external-icon" size={12} stroke-width={2} aria-hidden="true" />
+        </a>
+        <div class="hero-hours">
+          {site.hours.map((line) => <p>{line}</p>)}
+        </div>
+        <a class="hero-phone" href={telHref(site.phone)} aria-label={`Call ${site.name} at ${site.phone}`}>
+          {site.phone}
+        </a>
+      </div>
+    </section>
+
+    <main id="menu" class="menu">
+      <div class="menu-heading">
+        <h2>Menu</h2>
+      </div>
+
+      {menu.categories.map((category) => (
+        <section class="menu-section" id={slugify(category.category)}>
+          <div class="section-heading">
+            <h3>{category.category}</h3>
+          </div>
+          {category.description && <p class="category-intro">{category.description}</p>}
+          {category.items.length > 0 && groupedItems(category.items).map((group) => (
+            <div class="dish-group">
+              {group.group && <h4 class="menu-subgroup">{group.group}</h4>}
+              <div class="dish-grid">
+                {group.items.map((item) => (
+                    <article class:list={["dish-card", !item.image && "no-image"]}>
+                      {item.image && (
+                        <img
+                          class:list={["dish-image", showFallbacks && item.fallback?.image && "is-fallback"]}
+                          src={item.image}
+                          alt=""
+                          loading="lazy"
+                        />
+                      )}
+                      <div class="dish-body">
+                        <div class="dish-title-row">
+                          <h4 class:list={[showFallbacks && item.fallback?.name && "is-fallback"]}>{item.name}</h4>
+                          <p class:list={["price", showFallbacks && item.fallback?.price && "is-fallback"]}>{item.price}</p>
+                        </div>
+                        {item.description && (
+                          <p class:list={["description", showFallbacks && item.fallback?.description && "is-fallback"]}>
+                            {item.description}
+                          </p>
+                        )}
+                      </div>
+                    </article>
+                ))}
+              </div>
+            </div>
+          ))}
+        </section>
+      ))}
+
+    </main>
+
+    <Footer site={site} />
+  </body>
+</html>

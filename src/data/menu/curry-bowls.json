@@ -1,0 +1,18 @@
+{
+  "category": "Curry Bowls",
+  "description": "Vietnamese curry over rice.",
+  "items": [
+    {
+      "name": "Ca Ri Chay / Vegetarian Curry Bowl",
+      "price": "$15",
+      "description": "Vegetable curry.",
+      "image": "/images/menu/ca-ri-chay.jpg"
+    },
+    {
+      "name": "Ca Ri Ga / Chicken Curry Bowl",
+      "price": "$15",
+      "description": "Chicken curry.",
+      "image": "/images/menu/ca-ri-ga.jpg"
+    }
+  ]
+}

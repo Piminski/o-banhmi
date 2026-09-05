@@ -1,0 +1,14 @@
+{
+  "redirects": [
+    {
+      "source": "/menu",
+      "destination": "/#menu",
+      "permanent": true
+    },
+    {
+      "source": "/menu/",
+      "destination": "/#menu",
+      "permanent": true
+    }
+  ]
+}

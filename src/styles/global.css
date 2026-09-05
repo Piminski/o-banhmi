@@ -1,0 +1,470 @@
+:root {
+  --paper: #f3ead8;
+  --ink: #11100e;
+  --muted: #5f5a51;
+  --line: #d4c4a8;
+  --line-dark: #2a2722;
+  --button: #191714;
+  --button-hover: #3d352d;
+  --photo-bg: #e4d4b8;
+  --chili: #c43c1a;
+  --chili-hover: #a33216;
+  --header-height: 3.4rem;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+body {
+  margin: 0;
+  position: relative;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Geist Variable", Geist, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 15px;
+  letter-spacing: 0;
+}
+
+body:has(.site-header) {
+  padding-top: var(--header-height);
+}
+
+a {
+  color: inherit;
+}
+
+.skip-link {
+  background: var(--ink);
+  color: var(--paper);
+  font-size: 0.84rem;
+  font-weight: 760;
+  left: -9999px;
+  padding: 0.75rem 1rem;
+  position: absolute;
+  text-decoration: none;
+  top: auto;
+  z-index: 100;
+}
+
+.skip-link:focus-visible {
+  left: 1rem;
+  top: calc(var(--header-height) + 0.5rem);
+}
+
+:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+}
+
+.site-header-order:focus-visible,
+.skip-link:focus-visible {
+  outline-color: var(--paper);
+}
+
+.external-icon {
+  display: inline-block;
+  margin-left: 0.3em;
+  vertical-align: -0.1em;
+}
+
+.site-header {
+  align-items: center;
+  background: var(--ink);
+  color: var(--paper);
+  display: flex;
+  gap: 1rem;
+  height: var(--header-height);
+  justify-content: space-between;
+  left: 0;
+  padding: 0 clamp(1rem, 4vw, 3rem);
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 20;
+}
+
+.site-header-name {
+  font-size: 0.95rem;
+  font-weight: 540;
+  letter-spacing: -0.02em;
+  text-decoration: none;
+}
+
+.site-header-order {
+  align-items: center;
+  background: var(--chili);
+  color: var(--paper);
+  display: inline-flex;
+  font-size: 0.82rem;
+  font-weight: 760;
+  padding: 0.5rem 0.85rem;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.site-header-order:hover {
+  background: var(--chili-hover);
+}
+
+.hero {
+  align-items: center;
+  background: var(--paper);
+  border-bottom: 1px solid var(--line-dark);
+  display: flex;
+  justify-content: center;
+  min-height: 68svh;
+  padding: clamp(2.5rem, 7vw, 5.5rem) 1rem;
+  text-align: center;
+}
+
+.hero-content {
+  max-width: 980px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Geist Variable", Geist, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-weight: 720;
+  letter-spacing: 0;
+  line-height: 0.98;
+  margin: 0;
+}
+
+h1 {
+  font-size: clamp(2.4rem, 8vw, 5.2rem);
+  font-weight: 540;
+  letter-spacing: -0.03em;
+  line-height: 0.95;
+  margin-bottom: 0.55rem;
+}
+
+.subtitle {
+  font-size: clamp(1rem, 2.15vw, 1.55rem);
+  font-weight: 460;
+  margin: 0 0 2.15rem;
+}
+
+.hero-address {
+  display: block;
+  font-size: clamp(0.86rem, 1.6vw, 1.05rem);
+  font-weight: 520;
+  line-height: 1.45;
+  text-decoration: underline;
+  text-underline-offset: 0.22em;
+}
+
+.hero-hours {
+  border-bottom: 1px solid var(--line-dark);
+  border-top: 1px solid var(--line-dark);
+  display: block;
+  font-size: clamp(0.86rem, 1.6vw, 1.05rem);
+  font-weight: 520;
+  line-height: 1.45;
+  margin: 1.65rem auto 1.2rem;
+  padding: 0.75rem 1rem;
+}
+
+.hero-hours p {
+  margin: 0;
+}
+
+.hero-phone {
+  display: block;
+  font-size: clamp(0.86rem, 1.6vw, 1.05rem);
+  font-weight: 520;
+  line-height: 1.45;
+  text-decoration: underline;
+  text-underline-offset: 0.22em;
+}
+
+.menu {
+  padding: clamp(2rem, 6vw, 4.5rem) clamp(1rem, 4vw, 3rem) 2rem;
+  scroll-margin-top: var(--header-height);
+}
+
+.menu-heading {
+  margin: 0 auto 1.8rem;
+  max-width: 1120px;
+  text-align: center;
+}
+
+.menu-heading h2 {
+  font-size: clamp(1.6rem, 4.5vw, 3.7rem);
+}
+
+.menu-section {
+  margin: 0 auto 3.6rem;
+  max-width: 1120px;
+  scroll-margin-top: calc(var(--header-height) + 0.75rem);
+}
+
+.section-heading {
+  border-bottom: 2px solid var(--line-dark);
+  margin-bottom: 1rem;
+  padding-bottom: 0.65rem;
+}
+
+.section-heading h3 {
+  font-size: clamp(1rem, 2vw, 1.7rem);
+  font-weight: 450;
+}
+
+.category-intro {
+  color: var(--muted);
+  font-size: 0.86rem;
+  line-height: 1.45;
+  margin: 0 0 0.85rem;
+  max-width: 36rem;
+}
+
+.menu-subgroup {
+  font-size: 0.92rem;
+  font-weight: 650;
+  margin: 0.85rem 0 0.1rem;
+}
+
+.dish-group:first-of-type .menu-subgroup {
+  margin-top: 0.35rem;
+}
+
+.dish-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.dish-card {
+  border-bottom: 1px solid var(--line);
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 116px 1fr;
+  min-height: 138px;
+  padding: 0.86rem 0;
+}
+
+.dish-card:nth-child(odd of :not([hidden])) {
+  border-right: 1px solid var(--line);
+  padding-right: 1rem;
+}
+
+.dish-card:nth-child(even of :not([hidden])) {
+  padding-left: 1rem;
+}
+
+.dish-card.no-image {
+  gap: 0;
+  grid-template-columns: 1fr;
+  min-height: 0;
+  padding: 0.4rem 0;
+}
+
+.dish-card.no-image .dish-body {
+  gap: 0.15rem;
+}
+
+.dish-image {
+  aspect-ratio: 1;
+  background: var(--photo-bg);
+  border: 1px solid var(--line);
+  display: block;
+  height: auto;
+  object-fit: cover;
+  width: 116px;
+}
+
+.dish-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  min-width: 0;
+}
+
+.dish-title-row {
+  align-items: start;
+  display: grid;
+  gap: 0.8rem;
+  grid-template-columns: 1fr auto;
+}
+
+.dish-title-row h4 {
+  font-size: 1.08rem;
+  font-weight: 450;
+  line-height: 1.16;
+}
+
+.price {
+  font-size: 1rem;
+  font-weight: 500;
+  margin: 0;
+  white-space: nowrap;
+}
+
+.description {
+  color: var(--muted);
+  font-size: 0.86rem;
+  line-height: 1.45;
+  margin: 0;
+}
+
+.is-fallback {
+  color: #c1121f;
+}
+
+.dish-image.is-fallback {
+  color: inherit;
+  outline: 2px solid #c1121f;
+  outline-offset: 2px;
+}
+
+.site-footer {
+  align-items: center;
+  border-top: 1px solid var(--line-dark);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.5rem;
+  justify-content: space-between;
+  margin: 0 auto;
+  max-width: 1120px;
+  padding: 1.25rem clamp(1rem, 4vw, 3rem) 1.5rem;
+}
+
+.footer-copy {
+  color: var(--muted);
+  font-size: 0.78rem;
+  margin: 0;
+}
+
+.footer-nav a {
+  font-size: 0.78rem;
+  font-weight: 650;
+  text-decoration: underline;
+  text-underline-offset: 0.22em;
+}
+
+.page-header {
+  border-bottom: 1px solid var(--line-dark);
+  padding: 1rem clamp(1rem, 4vw, 3rem);
+  text-align: center;
+}
+
+.page-home {
+  font-size: 1.1rem;
+  font-weight: 540;
+  text-decoration: underline;
+  text-underline-offset: 0.22em;
+}
+
+.legal-page {
+  margin: 0 auto;
+  max-width: 720px;
+  padding: clamp(2rem, 5vw, 3.5rem) clamp(1rem, 4vw, 3rem) 2rem;
+}
+
+.legal-page h1 {
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
+  margin-bottom: 0.5rem;
+}
+
+.legal-page h2 {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  font-weight: 600;
+  margin: 1.75rem 0 0.65rem;
+}
+
+.legal-page p,
+.legal-page li {
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+
+.legal-page ul {
+  margin: 0.5rem 0 0;
+  padding-left: 1.25rem;
+}
+
+.legal-page li + li {
+  margin-top: 0.35rem;
+}
+
+.legal-page a {
+  text-decoration: underline;
+  text-underline-offset: 0.22em;
+}
+
+.legal-updated {
+  color: var(--muted);
+  font-size: 0.82rem;
+  margin: 0 0 1.5rem;
+}
+
+.legal-back {
+  border-top: 1px solid var(--line);
+  margin-top: 2rem;
+  padding-top: 1.25rem;
+}
+
+.legal-back a {
+  font-weight: 650;
+}
+
+@media (max-width: 880px) {
+  .hero {
+    min-height: 62svh;
+  }
+
+  .dish-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dish-card:nth-child(odd of :not([hidden])),
+  .dish-card:nth-child(even of :not([hidden])) {
+    border-right: 0;
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+@media (max-width: 560px) {
+  body {
+    font-size: 14px;
+  }
+
+  .hero {
+    min-height: 58svh;
+  }
+
+  .hero-hours {
+    width: 100%;
+  }
+
+  .dish-card {
+    gap: 0.75rem;
+    grid-template-columns: 92px 1fr;
+  }
+
+  .dish-image {
+    width: 92px;
+  }
+
+  .dish-title-row {
+    gap: 0.55rem;
+  }
+
+  .dish-title-row h4 {
+    font-size: 0.98rem;
+  }
+
+  .description {
+    font-size: 0.82rem;
+  }
+}
