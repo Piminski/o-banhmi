@@ -79,22 +79,14 @@ a {
   background: var(--ink);
   color: var(--paper);
   display: flex;
-  gap: 1rem;
   height: var(--header-height);
-  justify-content: space-between;
+  justify-content: center;
   left: 0;
   padding: 0 clamp(1rem, 4vw, 3rem);
   position: fixed;
   right: 0;
   top: 0;
   z-index: 20;
-}
-
-.site-header-name {
-  font-size: 0.95rem;
-  font-weight: 540;
-  letter-spacing: -0.02em;
-  text-decoration: none;
 }
 
 .site-header-order {
